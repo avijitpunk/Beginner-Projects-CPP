@@ -1,22 +1,28 @@
 #include <iostream>
-
+#include <string>
 using namespace std;
 int main ()
-{ int num, copy, digit, rev=0;
-cout<<"Enter the number:";
-cin>>num;
-copy=num; // we reverse this variable named 'copy'
+{ 
+	string num,copy;
+	char temp;
+	cout<<"Enter the number:";
+	cin>>num;
+	
+	//copy of first number
+	copy=num; 
 
-while (num!=0)
-{ digit = num %10; // returns the last digit of number
-rev = (rev*10) + digit; 
-num = num/10;} // removes the last digit from number
-cout<<"The reverse of the number is:"<<rev;
 
-if(rev==copy) // compares both numbers
-cout<<"\nThe given number is palindrome";
+	// we reverse this variable named 'copy'
+	for(int i=0;i<copy.length()/2;i++)
+	{
+		temp=copy[i];
+		copy[i]=copy[copy.length()-i-1];
+		copy[copy.length()-i-1]=temp;
+	}
+	if(num==copy) // compares both numbers
+	cout<<"\nThe given number is palindrome"<<endl;
 
-else
-cout<<"\n"<<"The given number is not a palindrome";
-return 0;
+	else
+	cout<<"\n"<<"The given number is not a palindrome"<<endl;
+	return 0;
 }
